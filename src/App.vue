@@ -12,7 +12,7 @@
 </template> -->
 
 <template>
-  <div id="app" style="padding: 20px; max-width: 800px; margin: auto">
+  <div id="app" style="padding: 20px; max-width: 800px; margin: left">
     <h2>CSV to HTML Table Converter</h2>
     <div style="margin-bottom: 20px">
       <input
@@ -94,10 +94,9 @@ export default {
           let cellData = this.csvRows[i][j];
           if (j === 0) {
             try {
-              const response = await axios.get(cellData, {
-                responseType: 'arraybuffer',
-              });
+              const response = await axios.get(cellData);
               cellData = `<img src="${response.request.responseURL}" alt="Image" style="width: 100px;">`;
+              console.log(response);
             } catch (error) {
               console.log('');
             }
