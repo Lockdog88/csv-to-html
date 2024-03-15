@@ -94,7 +94,10 @@ export default {
           let cellData = this.csvRows[i][j];
           if (j === 0) {
             try {
-              const response = await axios.get(cellData);
+              const response = await axios(cellData, {
+                method: 'GET',
+                mode: 'no-cors',
+              });
               cellData = `<img src="${response.request.responseURL}" alt="Image" style="width: 100px;">`;
               console.log(response);
             } catch (error) {
