@@ -95,7 +95,7 @@ export default {
           if (j === 0) {
             try {
               const response = await axios(
-                `https://corsproxy.io/?${cellData}`,
+                `https://corsproxy.io/?${encodeURIComponent(cellData)}`,
                 {
                   method: 'GET',
                   mode: 'no-cors',
