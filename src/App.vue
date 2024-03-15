@@ -94,12 +94,15 @@ export default {
           let cellData = this.csvRows[i][j];
           if (j === 0) {
             try {
-              const response = await axios(cellData, {
-                method: 'GET',
-                mode: 'no-cors',
-              });
+              const response = await axios(
+                `https://corsproxy.io/?${cellData}`,
+                {
+                  method: 'GET',
+                  mode: 'no-cors',
+                }
+              );
               cellData = `<img src="${response.request.responseURL}" alt="Image" style="width: 100px;">`;
-              console.log(response);
+              //console.log(response);
             } catch (error) {
               console.log('');
             }
